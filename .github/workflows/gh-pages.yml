@@ -4,12 +4,21 @@ on:
   push:
     branches: [ main ]
 
+# Требуемые permissions для использования встроенного GITHUB_TOKEN
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Убедимся, что GITHUB_TOKEN сохранён в git-credentials для действий, которые делают push
+          persist-credentials: true
 
       - name: Setup Node (optional)
         uses: actions/setup-node@v4
