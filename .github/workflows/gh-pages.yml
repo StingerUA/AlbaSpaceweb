@@ -31,4 +31,7 @@ jobs:
           # Используем встроенный GITHUB_TOKEN для деплоя
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
+          # Явно укажем ветку публикации и разрешим перезапись, чтобы избежать ошибки блокировки ref
+          publish_branch: gh-pages
+          force: true
           # Указываем root репозитория — в нашем случае корневой статический экспорт
