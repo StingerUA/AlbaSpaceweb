@@ -1,0 +1,37 @@
+name: Playwright Smoke Test
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [ main ]
+
+jobs:
+  smoke:
+    name: Run Playwright smoke
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright bs4 requests
+          python -m playwright install
+
+      - name: Run smoke test script
+        run: |
+          python tools/smoke_test_playwright.py
+        env:
+          TERM: xterm
+
+      - name: Upload smoke report
+        uses: actions/upload-artifact@v4
+        with:
+          name: alba-smoke-report
+          path: /tmp/alba_smoke_report.json
