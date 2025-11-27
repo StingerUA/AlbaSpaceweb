@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alba Space — переадресация</title>
+  <script>
+    // Перенаправление на главную страницу экспортированного сайта
+    const target = 'Alba Space_ Uzayda Marka Tanıtımı ve Reklam Çözümleri _ Alba Space_files/Alba Space_ Uzayda Marka Tanıtımı ve Reklam _ Alba Space.html';
+    // Используем encodeURI, чтобы корректно обработать пробелы и локальные символы
+    const url = encodeURI(target);
+    // Небольшая задержка, чтобы пользователь увидел сообщение
+    setTimeout(()=>{ window.location.href = url }, 250);
+  </script>
+  <style>body{font-family:system-ui,Helvetica,Arial;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;padding:1rem;background:#0b1220;color:#fff}</style>
+</head>
+<body>
+  <div style="max-width:40rem;text-align:center">
+    <h1>Alba Space</h1>
+    <p>Перенаправляю на экспортированную версию сайта…</p>
+    <p>Если автоматическое перенаправление не сработает, кликните по ссылке ниже:</p>
+    <p><a id="manual" href="#" style="color:#9be7ff"></a></p>
+    <script>document.getElementById('manual').href = encodeURI(target); document.getElementById('manual').textContent = decodeURI(target);</script>
+  </div>
+</body>
+</html>
